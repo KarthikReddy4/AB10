@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Species Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <video loop autoplay muted>
+        <source src="{{url_for('static', filename='./images/desktop.mp4')}}" type="video/mp4">
+    </video>
+    <div class="super_container">
+        <div class="navbar">
+            <img class="logo" src="{{ url_for('static', filename='./Images/logo.jpg') }}" alt="logo">
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container">
+            <h1>Plant Species Recognition</h1>
+            
+            <h2>Uploaded Image</h2>
+            <div class="up_img">
+                {% if uploaded_image %}
+                <img src="{{ uploaded_image }}" alt="Uploaded Image">
+                {% endif %}
+            </div>
+    
+            {% if message %}
+            <h2>{{ message }}</h2>
+            {% endif %}
+    
+            {% if uploaded_image %}
+            <h4>Images Related to Plant Species</h4>
+            <div class="image-container">
+                {% for image in images %}
+                <img src="{{ image }}" alt="Random Image">
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <form action="/" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="file" accept=".jpg, .jpeg, .png" required>
+                <button type="submit" id="upload-btn">Upload Image</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
