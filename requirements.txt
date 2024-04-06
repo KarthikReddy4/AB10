@@ -1,6 +1,7 @@
 #python version 3.11.8 64bit
 #pip==24.0
 
+flask==3.0.2
 pandas==2.2.0
 pillow
 torchvision
